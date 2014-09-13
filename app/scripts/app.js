@@ -1,5 +1,7 @@
 'use strict';
 
+navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+
 /**
  * @ngdoc overview
  * @name voiceMemoRsApp
@@ -10,7 +12,6 @@
  */
 angular
   .module('voiceMemoRsApp', [
-    'ngResource',
     'ngRoute'
   ])
   .config(function ($routeProvider) {
@@ -18,10 +19,6 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
