@@ -23,7 +23,7 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Voice Memo</h3>
+        <h3 class="text-muted">Voice Memos</h3>
       </div>
 
       <div ng-view=""></div>
@@ -41,9 +41,13 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder-v1.2.js"
+    <!--<script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder-v1.2.js"-->
+        <!--data-require="StereoRecorder,MediaRecorder"-->
+        <!--data-scripts-dir="https://cdn.webrtc-experiment.com/msr/">-->
+    <!--</script>-->
+    <script src="scripts/vendor/MediaStreamRecorder-v1.2.js"
         data-require="StereoRecorder,MediaRecorder"
-        data-scripts-dir="https://cdn.webrtc-experiment.com/msr/">
+        >
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -51,13 +55,16 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/remotestorage/remotestorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    <script src="scripts/remotestorage-voicememos.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
