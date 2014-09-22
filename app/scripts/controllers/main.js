@@ -8,7 +8,7 @@
  * Controller of the voiceMemoRsApp
  */
 angular.module('voiceMemoRsApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, VoicememoResource) {
 
     var setupRecording = function () {
       var mediaConstraints = {
@@ -33,7 +33,7 @@ angular.module('voiceMemoRsApp')
     };
 
     $scope.saveRecording = function () {
-      remoteStorage.voicememos.addMemo($scope.memoTitle, $scope.audioRecording).then(function () {
+      VoicememoResource.addMemo($scope.memoTitle, $scope.audioRecording).then(function () {
         console.log('save completed', arguments);
       });
     };
