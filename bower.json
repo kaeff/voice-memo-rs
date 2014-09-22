@@ -15,5 +15,17 @@
     "angular-mocks": "~1.2.0",
     "angular-scenario": "~1.2.0"
   },
-  "appPath": "app"
+  "appPath": "app",
+  "overrides": {
+    "MediaStreamRecorder": {
+      "main": [
+        "MediaStreamRecorder-v1.2.js",
+        "./common/Cross-Browser-Declarations.js",
+        "./common/ObjectStore.js",
+        "./AudioStreamRecorder/MediaRecorder.js",
+        "./AudioStreamRecorder/StereoAudioRecorder.js",
+        "./AudioStreamRecorder/StereoRecorder.js"
+      ]
+    }
+  }
 }
