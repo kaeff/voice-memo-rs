@@ -34,7 +34,7 @@ angular.module('voiceMemoRsApp')
 
     $scope.saveRecording = function () {
       remoteStorage.voicememos.addMemo($scope.memoTitle, $scope.audioRecording).then(function () {
-        console.log("save completed", arguments);
+        console.log('save completed', arguments);
       });
     };
 

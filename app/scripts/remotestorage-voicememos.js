@@ -1,35 +1,37 @@
+'use strict';
+
 RemoteStorage.defineModule('voicememos', function(privateClient, publicClient) {
 
   // Define a common data type using JSON Schema
   privateClient.declareType('voicememo', {
-    "description": "A memo in spoken language",
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string",
-        "format": "id"
+    'description': 'A memo in spoken language',
+    'type': 'object',
+    'properties': {
+      'id': {
+        'type': 'string',
+        'format': 'id'
       },
-      "title": {
-        "type": "string"
+      'title': {
+        'type': 'string'
       },
-      "file": {
-        "type": "object",
-        "properties": {
-          "mimeType": {
-            "type": "string"
+      'file': {
+        'type': 'object',
+        'properties': {
+          'mimeType': {
+            'type': 'string'
           },
-          "size": {
-            "type": "number"
+          'size': {
+            'type': 'number'
           },
-          "url": {
-            "type": "string",
-            "format": "uri"
+          'url': {
+            'type': 'string',
+            'format': 'uri'
           }
         },
-        "required": ["mimeType", "size", "url"]
+        'required': ['mimeType', 'size', 'url']
       }
     },
-    "required": ["id"]
+    'required': ['id']
   });
 
   var handleError = function (error) {
@@ -57,7 +59,7 @@ RemoteStorage.defineModule('voicememos', function(privateClient, publicClient) {
     var saveMemo = function (recordingUrl) {
       return privateClient.storeObject('voicememo', id, {
         id: id,
-        title: title || "",
+        title: title || '',
         file: {
           mimeType: blob.type,
           size: blob.size,
