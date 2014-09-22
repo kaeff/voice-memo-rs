@@ -367,7 +367,7 @@ module.exports = function (grunt) {
           'cd dist',
           'git init .',
           'git add .',
-          'git commit -m "Deployed: $(echo commitmsg)"',
+          'git commit -m "Deployed: $(cat .git/commitmsg)"',
           'git push "<%= packageJson.repository.url %>" master:gh-pages --force',
           'rm -rf .git'
         ].join('&&')
