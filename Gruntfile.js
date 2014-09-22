@@ -27,6 +27,8 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    packageJson: require('./package.json'),
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -356,6 +358,20 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    shell: {
+      deploy: {
+        command: [
+          'git show head "--format=oneline" | head -n 1 > .git/commitmsg',
+          'cd dist',
+          'git init .',
+          'git add .',
+          'git commit -m "Deployed: $(echo commitmsg)"',
+          'git push "<%= packageJson.repository.url %>" master:gh-pages --force',
+          'rm -rf .git'
+        ].join('&&')
+      }
     }
   });
 
@@ -409,5 +425,10 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'shell:deploy'
   ]);
 };
